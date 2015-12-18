@@ -22,7 +22,12 @@ NSString *const KZPPlaygroundDidChangeImplementationNotification = @"KZPPlaygrou
 #pragma ide diagnostic ignored "UnresolvedMessage"
 + (void)load
 {
+  //! no swizzling allowed e.g. device
   SEL selectorToSwizzle = @selector(performInjectionWithClass:);
+  if (![SFDynamicCodeInjection.class instancesRespondToSelector:selectorToSwizzle]) {
+      return;
+  }
+
   RSSwizzleInstanceMethod(SFDynamicCodeInjection.class,
     selectorToSwizzle,
     RSSWReturnType(void),
