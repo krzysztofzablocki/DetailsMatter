@@ -35,6 +35,7 @@ class RememberView: UIView {
         var perspectiveTransform = CATransform3DIdentity
         perspectiveTransform.m34 = 1 / -900
         self.layer.sublayerTransform = perspectiveTransform
+        entryField.delegate = self
     }
 
     @IBAction func valueChanges(check: UISwitch) {
@@ -106,5 +107,9 @@ class RememberView: UIView {
 
     func toRadian(value: Int) -> CGFloat {
         return CGFloat(Double(value) / 180.0 * M_PI)
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
     }
 }
