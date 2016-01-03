@@ -23,7 +23,7 @@ extension UIView {
     }
 }
 
-class RememberView: UIView {
+class RememberView: UIView, UITextFieldDelegate {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var foldView: UIView!
     @IBOutlet weak var submitButton: UIButton!
